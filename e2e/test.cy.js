@@ -5,8 +5,8 @@ describe('Luma Successful Login Tests', () => {
     it('should log in successfully with valid credentials', () => {
       loginPage.visit();
       cy.get('a').contains('Sign In').click();
-      cy.get("[id='email']").type("iremhverdi@gmail.com")
-      cy.get("[id='pass']").type("929568Ab")
+      cy.get("[id='email']").type("irem@gmail.com")
+      cy.get("[id='pass']").type("123456Ab")
       cy.get("span").contains("Sign In").click();
   })
 });
@@ -16,8 +16,8 @@ describe("Luma Unsuccessful Login Tests",()=>{
     it('should not log in successfully with invalid credentials', () => {
       loginPage.visit();
       cy.get('a').contains('Sign In').click();
-      cy.get("[id='email']").type("aysehverdi@gmail.com")
-      cy.get("[id='pass']").type("929568A")
+      cy.get("[id='email']").type("ayse@gmail.com")
+      cy.get("[id='pass']").type("123789Qw")
       cy.get("span").contains("Sign In").click();
   }) 
 }); 
@@ -34,7 +34,7 @@ describe("Add product to cart and Purchase",()=>{
     cy.get("[class='action showcart']").click();
     cy.get("[id='top-cart-btn-checkout']").click();
     cy.wait(6000)
-    cy.get("[id='customer-email']").first().type("iremhverdi@gmail.com");//doesn't work,can't fix that
+    cy.get("[id='customer-email']").first().type("irem@gmail.com");//doesn't work,can't fix that
     cy.get("[name='firstname']").type("İrem");
     cy.get("[name='lastname']").type("H");
     cy.get("[name='street[0]']").type("Kadiköy");
