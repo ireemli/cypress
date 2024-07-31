@@ -2,16 +2,16 @@ class LoginPage{
     visit(){
         cy.visit('https://magento.softwaretestingboard.com');
     }
-    signIn(email,password){
+    signIn(){
         cy.get('a').contains('Sign In').click();
       }  
       
       enterEmail(email){
-        cy.get("[id='email']").type(email)
+        cy.get("[id='email']").type("irem@gmail.com")
       }
       
       enterPassword(password){
-        cy.get("[id='pass']").type(password)
+        cy.get("[id='pass']").type("123456Ab")
       } 
       
       login(){
