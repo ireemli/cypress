@@ -4,9 +4,9 @@ describe('Luma Successful Login Tests', () => {
   const loginPage = new LoginPage();
     it('should log in successfully with valid credentials', () => {
       loginPage.visit();
-      cy.get('a').contains('Sign In').click();
-      cy.get("[id='email']").type("irem@gmail.com")
-      cy.get("[id='pass']").type("123456Ab")
+      loginPage.signIn();
+      loginPage.enterEmail("irem@gmail.com");
+      loginPage.enterPassword("123456Ab");
       cy.get("span").contains("Sign In").click();
   })
 });
@@ -16,21 +16,23 @@ describe("Luma Unsuccessful Login Tests",()=>{
     it('should not log in successfully with invalid credentials', () => {
       loginPage.visit();
       cy.get('a').contains('Sign In').click();
-      cy.get("[id='email']").type("ayse@gmail.com")
+      cy.get("[id='email']").type("aysegmail.com")
       cy.get("[id='pass']").type("123789Qw")
       cy.get("span").contains("Sign In").click();
   }) 
 }); 
 
-
+//The products in "What's New, change by day. Should find a permanent menu selection"
 describe("Add product to cart and Purchase",()=>{
   const loginPage = new LoginPage();
   it('product page should appear', () => {
     loginPage.visit();
-    cy.get("[role='menuitem']").contains("What's New").click();
-    cy.get("a").contains("Wayfarer Messenger Bag").click();
-    cy.get("button").contains("Add to Cart").click();
-    cy.wait(5000)
+    cy.get("[role='menuitem']").contains("Women").click();
+    cy.get("[title='Radiant Tee']").click();
+    cy.get("[id='option-label-size-143-item-167']").click();
+    cy.get("[id='option-label-color-93-item-50']").click();
+    cy.get("button").contains("Add to Cart").click({force: true});
+    cy.wait(6000)
     cy.get("[class='action showcart']").click();
     cy.get("[id='top-cart-btn-checkout']").click();
     cy.wait(6000)
@@ -51,10 +53,13 @@ describe("Add product to cart and Purchase",()=>{
 });
 
 describe("Delete product from cart",()=>{
+  const loginPage = new LoginPage();
   it('productshould be deleted from cart', () => {
     loginPage.visit();
-    cy.get("[role='menuitem']").contains("What's New").click();
-    cy.get("a").contains("Wayfarer Messenger Bag").click();
+    cy.get("[role='menuitem']").contains("Women").click();
+    cy.get("[title='Radiant Tee']").click();
+    cy.get("[id='option-label-size-143-item-167']").click();
+    cy.get("[id='option-label-color-93-item-50']").click();
     cy.get("button").contains("Add to Cart").click();
     cy.wait(5000)
     cy.get("[title='Remove item']").click({force: true});
@@ -63,3 +68,4 @@ describe("Delete product from cart",()=>{
     cy.get("[id='ui-id-1']").should('contain.text', "You have no items in your shopping cart.");
 }) 
 });
+
