@@ -22,7 +22,6 @@ describe("Luma Unsuccessful Login Tests",()=>{
   }) 
 }); 
 
-//The products in "What's New, change by day. Should find a permanent menu selection"
 describe("Add product to cart and Purchase",()=>{
   const loginPage = new LoginPage();
   it('product page should appear', () => {
