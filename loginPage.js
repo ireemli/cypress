@@ -7,11 +7,11 @@ class LoginPage{
       }  
       
       enterEmail(email){
-        cy.get("[id='email']").type("iremhverdi@gmail.com")
+        cy.get("[id='email']").type("irem@gmail.com")
       }
       
       enterPassword(password){
-        cy.get("[id='pass']").type("929568Ab")
+        cy.get("[id='pass']").type("123456Ab")
       } 
       
       login(){
